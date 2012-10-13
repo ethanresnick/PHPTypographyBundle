@@ -53,7 +53,7 @@ class Configuration implements ConfigurationInterface
                 
                 //wrapping and dewidow                -
                 ->booleanNode('wrap_hard_hyphens')->end()
-                ->booleanNode('set_email_wrap')->end()
+                ->booleanNode('email_wrap')->end()
                 ->booleanNode('url_wrap')->end()
                 ->booleanNode('space_​collapse')->end()
                 ->booleanNode('dewidow')->defaultValue(true)->end()                
@@ -71,7 +71,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 
                 //smart quotes
-                ->booleanNode('​smart_quotes')->end()
+                ->booleanNode('smart_quotes')->end()
                 ->scalarNode('smart_​quotes_​primary')
                     ->validate()
                         ->ifNotInArray($quotesTypeArray)
@@ -92,7 +92,12 @@ class Configuration implements ConfigurationInterface
                         ->thenInvalid('PHPTypographyBundle: the %s diacratic language is not supported')
                     ->end()
                 ->end()
-                
+
+                //math & spacing
+                ->booleanNode('fraction_spacing')->end()
+                ->booleanNode('unit_spacing')->end()
+                ->booleanNode('single_character_word_spacing')->end()
+                ->booleanNode('space_collapse')->end()
             ->end();
 
         return $treeBuilder;
